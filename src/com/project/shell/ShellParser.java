@@ -25,6 +25,7 @@ public class ShellParser
 	
 	// we break out with <control><C>
 	while (true) {
+		
 	  // read what the user entered
 	  System.out.print(this.tag+"-"+this.lineCount+"> ");
 	  commandLine = console.readLine();
@@ -33,7 +34,8 @@ public class ShellParser
 	  String[] shellHistory = commandLine.split(" ");
 
 	  
-	  	  
+	  if(this.aCount<=10)
+	  {
 	  // if the user entered a return, just loop again
 	  if (commandLine.equals(""))
 	  {
@@ -82,12 +84,15 @@ public class ShellParser
 		}else if (commandLine.equals("exit")==false || commandLine.equals("version")==false  || commandLine.equals("time")==false || commandLine.equals("date")==false || commandLine.equals("history")==false)
 		{
 			lineHistory[aCount]= "History line: "+this.tag+(this.lineCount-1)+" "+shellHistory[0];
-			System.out.println("I can't recognize that command, maybe you should try the help command ;)");
+			System.out.println("''"+shellHistory[0]+"'' is an invalid command.");
 			this.lineCount++;
 			aCount++;
-		}	
-	 
+		
+		}
+	  }else{
+		  this.aCount=0;
 	  }
+	}
     } catch (Exception e) {
         e.printStackTrace();
       }
