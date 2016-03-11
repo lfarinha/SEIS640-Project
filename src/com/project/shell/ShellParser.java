@@ -35,67 +35,45 @@ public class ShellParser
 	  if (commandLine.equals(""))
 	  {
 		  continue;
-	  } else if(commandLine.equalsIgnoreCase("exit"))  
+	  } else if(commandLine.equalsIgnoreCase("exit") || commandLine.equalsIgnoreCase("!20"))  
 	  {
-		  this.lineCount++;
 		  this.commandList.setExitCommand(commandLine);
+		  this.lineCount++;
 		  
-		} else if(commandLine.equalsIgnoreCase("version"))  
+		} else if(commandLine.equalsIgnoreCase("version") || commandLine.equalsIgnoreCase("!21"))  
 		{
 			  commandList.setVersionCommand(stack, aCount, lineCount, commandLine, shellHistory);;
 			  this.lineCount++;
 			  aCount++;
-		} else if(commandLine.equalsIgnoreCase("help"))  
+		} else if(commandLine.equalsIgnoreCase("help") || commandLine.equalsIgnoreCase("!22"))  
 		{
 			  commandList.setHelpCommand(stack, aCount, lineCount, commandLine, shellHistory);;
 		      this.lineCount++;
 			  aCount++;
 		}
-		else if(commandLine.equalsIgnoreCase("time"))  
+		else if(commandLine.equalsIgnoreCase("time") || commandLine.equalsIgnoreCase("!23"))  
 		{
 			  commandList.setTimeCommand(stack, aCount, lineCount, commandLine, shellHistory);;
 		      this.lineCount++;
 			  aCount++;
-		}else if(commandLine.equalsIgnoreCase("date"))  
+		}else if(commandLine.equalsIgnoreCase("date") || commandLine.equalsIgnoreCase("!24"))  
 		{
 			  commandList.setDateCommand(stack, aCount, lineCount, commandLine, shellHistory);;
 		      this.lineCount++;
 			  aCount++;
-		}else if (commandLine.equalsIgnoreCase("history"))
+		}else if (commandLine.equalsIgnoreCase("history") || commandLine.equalsIgnoreCase("!25"))
 		{
 			commandList.setHistoryCommand(stack, aCount, lineCount, commandLine, shellHistory);;
 			this.lineCount++;
 			aCount++;
 			commandList.printHistory(this.aCount, this.stack, false);
 			
-		}else if (commandLine.equals("exit")==false || commandLine.equals("version")==false  || commandLine.equals("time")==false || commandLine.equals("date")==false || commandLine.equals("history")==false)
+		}else if (commandLine.equals("exit")==false || commandLine.equals("version")==false  || commandLine.equals("time")==false || commandLine.equals("date")==false || commandLine.equals("history")==false || commandLine.equals("!20")==false || commandLine.equals("!21")==false ||  commandLine.equals("!22")==false ||  commandLine.equals("!23")==false ||  commandLine.equals("!24")==false ||  commandLine.equals("!25")==false ||  commandLine.equals("!26")==false ||  commandLine.equals("!27")==false)
 		{
 			commandList.checkCommand(stack, aCount, lineCount, commandLine, shellHistory);
-			this.lineCount++;
-			aCount++;
 		}
 	  }else{ //else if the count of commands is more than 10 than...
 
-		   
-//		   if(commandLine.equalsIgnoreCase("version"))  
-//			{
-//				  this.stack.push(9, this.lineCount+": "+shellHistory[0]);
-//				  this.lineCount++;
-//				  System.out.println("Leonardo Farinha & Rohan Dayananda's CLI, Version 1.0");
-//				  aCount++;
-//			}else if (commandLine.equalsIgnoreCase("history"))
-//			{
-//				stack.pop();
-//				this.stack.push(9, this.lineCount+": "+shellHistory[0]);
-//				this.lineCount++;
-//				aCount++;
-//							
-//				for(int i=0; i<10; i++)
-//				{
-//					System.out.println("          ---more than 10--    "+this.stack.peek(i));
-//				}
-//
-//			}
 			
 		  if (commandLine.equals(""))
 		  {
@@ -105,32 +83,32 @@ public class ShellParser
 			  this.lineCount++;
 			  this.commandList.setExitCommand(commandLine);
 			  
-			} else if(commandLine.equalsIgnoreCase("version"))  
+			} else if(commandLine.equalsIgnoreCase("version") || commandLine.equalsIgnoreCase("!21"))  
 			{
 				  stack.pop();
 				  commandList.setVersionCommand(stack, 9, lineCount, commandLine, shellHistory);;
 				  this.lineCount++;
 				  aCount++;
-			} else if(commandLine.equalsIgnoreCase("help"))  
+			} else if(commandLine.equalsIgnoreCase("help") || commandLine.equalsIgnoreCase("!22"))  
 			{
 				  stack.pop();
 				  commandList.setHelpCommand(stack, 9, lineCount, commandLine, shellHistory);;
 			      this.lineCount++;
 				  aCount++;
 			}
-			else if(commandLine.equalsIgnoreCase("time"))  
+			else if(commandLine.equalsIgnoreCase("time") || commandLine.equalsIgnoreCase("!23"))  
 			{
 				  stack.pop();
 				  commandList.setTimeCommand(stack, 9, lineCount, commandLine, shellHistory);;
 			      this.lineCount++;
 				  aCount++;
-			}else if(commandLine.equalsIgnoreCase("date"))  
+			}else if(commandLine.equalsIgnoreCase("date") || commandLine.equalsIgnoreCase("!24"))  
 			{
 				  stack.pop();
 				  commandList.setDateCommand(stack, 9, lineCount, commandLine, shellHistory);;
 			      this.lineCount++;
 				  aCount++;
-			}else if (commandLine.equalsIgnoreCase("history"))
+			}else if (commandLine.equalsIgnoreCase("history") || commandLine.equalsIgnoreCase("!25"))
 			{
 				stack.pop();
 				commandList.setHistoryCommand(stack, 9, lineCount, commandLine, shellHistory);;
@@ -138,12 +116,9 @@ public class ShellParser
 				aCount++;
 				commandList.printHistory(9, this.stack, true);
 				
-			}else if (commandLine.equals("exit")==false || commandLine.equals("version")==false  || commandLine.equals("time")==false || commandLine.equals("date")==false || commandLine.equals("history")==false)
+			}else if (commandLine.equals("exit")==false || commandLine.equals("version")==false  || commandLine.equals("time")==false || commandLine.equals("date")==false || commandLine.equals("history")==false || commandLine.equals("!20")==false || commandLine.equals("!21")==false ||  commandLine.equals("!22")==false ||  commandLine.equals("!23")==false ||  commandLine.equals("!24")==false ||  commandLine.equals("!25")==false ||  commandLine.equals("!26")==false ||  commandLine.equals("!27")==false)
 			{
-			   // stack.pop();
 				commandList.checkCommand(stack, 9, lineCount, commandLine, shellHistory);
-				this.lineCount++;
-				aCount++;
 			}
 		  
 	  }
