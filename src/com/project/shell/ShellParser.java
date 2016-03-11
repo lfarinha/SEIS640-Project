@@ -37,9 +37,6 @@ public class ShellParser
 	  // if the user entered a return, just loop again
 	  if (commandLine.equals(""))
 	  {
-	      lineHistory[aCount]= "History line: "+this.tag+(this.lineCount-1)+" "+shellHistory[0];
-		  this.lineCount++;
-		  aCount++;
 		  continue;
 		} else if(commandLine.equalsIgnoreCase("exit"))  
 		{
