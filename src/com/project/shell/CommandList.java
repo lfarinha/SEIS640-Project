@@ -87,6 +87,21 @@ public class CommandList {
 			stack.push(aCount, lineCount+": "+shellHistory[0]);
 		}
 	}
+	
+	public void setNewProcess(StringStack stack, int aCount, int lineCount, String commandLine, String shellHistory)
+	{
+		if(commandLine.equalsIgnoreCase("!26"))
+		{
+			  stack.push(aCount, lineCount+": "+"#");
+			  CreateProcess process = new CreateProcess();
+			  process.setProcess(shellHistory);
+			  
+		}else{
+			  stack.push(aCount, lineCount+": "+shellHistory);
+			  CreateProcess process = new CreateProcess();
+			  process.setProcess(shellHistory);
+		}
+	}
 
 	public void printHistory(int aCount, StringStack stack, boolean isMoreThan10)
 	{

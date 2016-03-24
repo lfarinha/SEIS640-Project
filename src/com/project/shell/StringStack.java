@@ -49,11 +49,5 @@ public class StringStack {
 	    	 return this.stack.size();
 	     }
 	     
-	     public void checkStackSize(int listSize, int count, String string)
-	     {
-	    		 
-	    	 
-	    	    
-	     }
 	     
 }
