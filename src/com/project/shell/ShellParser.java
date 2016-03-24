@@ -67,12 +67,7 @@ public class ShellParser
 			this.lineCount++;
 			aCount++;
 			commandList.printHistory(this.aCount, this.stack, false);
-		}
-		
-		
-		
-		
-		else if (shellHistory[0] != null)
+		}else if (shellHistory[0] != null)
 		{
 			while(shellHistory[0] != null)
 			{
@@ -81,7 +76,6 @@ public class ShellParser
 				{
 					command = command.replace("#", "");
 					commandList.setNewProcess(stack, aCount, lineCount, commandLine, command);
-					System.out.println(this.command);
 					this.lineCount++;
 					aCount++;
 				}else{
@@ -89,12 +83,7 @@ public class ShellParser
 				}
 				break;
 			}
-		}
-		
-		
-		
-		
-		else if (commandLine.equals("exit")==false || commandLine.equals("version")==false  || commandLine.equals("time")==false || commandLine.equals("date")==false || commandLine.equals("history")==false || /*commandLine.equals(shellHistory[0])==false  ||*/ commandLine.equals("!20")==false || commandLine.equals("!21")==false ||  commandLine.equals("!22")==false ||  commandLine.equals("!23")==false ||  commandLine.equals("!24")==false ||  commandLine.equals("!25")==false ||  commandLine.equals("!26")==false ||  commandLine.equals("!27")==false)
+		}else if (commandLine.equals("exit")==false || commandLine.equals("version")==false  || commandLine.equals("time")==false || commandLine.equals("date")==false || commandLine.equals("history")==false || commandLine.equals("!20")==false || commandLine.equals("!21")==false ||  commandLine.equals("!22")==false ||  commandLine.equals("!23")==false ||  commandLine.equals("!24")==false ||  commandLine.equals("!25")==false ||  commandLine.equals("!26")==false ||  commandLine.equals("!27")==false)
 		{
 			commandList.checkCommand(stack, aCount, lineCount, commandLine, shellHistory);
 		}
@@ -135,27 +124,29 @@ public class ShellParser
 				  aCount++;
 			}else if (commandLine.equalsIgnoreCase("history") || commandLine.equalsIgnoreCase("!25"))
 			{
+				  stack.pop();
+				  commandList.setHistoryCommand(stack, 9, lineCount, commandLine, shellHistory);;
+				  commandList.printHistory(9, this.stack, true);
+				  this.lineCount++;
+				  aCount++;
+			}else if (shellHistory[0] != null)
+			{
 				stack.pop();
-				commandList.setHistoryCommand(stack, 9, lineCount, commandLine, shellHistory);;
-				this.lineCount++;
-				aCount++;
-				commandList.printHistory(9, this.stack, true);
-			}
-			
-			
-			
-//			else if (commandLine.equalsIgnoreCase("#") || commandLine.equalsIgnoreCase("!26"))
-//			{
-//				stack.pop();
-//				commandList.setNewProcess(stack, 9, lineCount, commandLine, shellHistory);;
-//				this.lineCount++;
-//				aCount++;
-//			}
-			
-			
-			
-			
-			else if (commandLine.equals("exit")==false || commandLine.equals("version")==false  || commandLine.equals("time")==false || commandLine.equals("date")==false || commandLine.equals("history")==false || commandLine.equals("#")==false || commandLine.equals("!20")==false || commandLine.equals("!21")==false ||  commandLine.equals("!22")==false ||  commandLine.equals("!23")==false ||  commandLine.equals("!24")==false ||  commandLine.equals("!25")==false ||  commandLine.equals("!26")==false)
+				while(shellHistory[0] != null)
+				{
+					this.command = shellHistory[0];
+					if(shellHistory[0].contains("#"))
+					{
+						command = command.replace("#", "");
+						commandList.setNewProcess(stack, 9, lineCount, commandLine, command);
+						this.lineCount++;
+						aCount++;	
+					}else{
+						System.out.println("Missing command after '#'");
+					}
+					break;
+				}			
+			}else if (commandLine.equals("exit")==false || commandLine.equals("version")==false  || commandLine.equals("time")==false || commandLine.equals("date")==false || commandLine.equals("history")==false || /*commandLine.equals("#")==false || */commandLine.equals("!20")==false || commandLine.equals("!21")==false ||  commandLine.equals("!22")==false ||  commandLine.equals("!23")==false ||  commandLine.equals("!24")==false ||  commandLine.equals("!25")==false ||  commandLine.equals("!26")==false)
 			{
 				commandList.checkCommand(stack, 9, lineCount, commandLine, shellHistory);
 			}

@@ -6,11 +6,11 @@ import java.util.Calendar;
 
 public class CommandList {
 	
-	String EXIT="FL,RD CLI exiting.", 
-		   VERSION="Leonardo Farinha & Rohan Dayananda's CLI, Version 1.0", 
-		   HELP=" version: print out the CLI version number " + System.lineSeparator() + " history: displays last 10 commands entered " + System.lineSeparator() + " help: displays list of valid commands " + System.lineSeparator() + " exit: exits CLI /n date prints out current date " + System.lineSeparator() + " time: prints out current time " + System.lineSeparator() + " !<number>: (re)executes command <number> from the history " + System.lineSeparator() + " #<cmd>: executes program <cmd>",
-		   TIME="The time is: ",
-		   DATE="The date is: ";
+	private final String EXIT="FL,RD CLI exiting.", 
+						 VERSION="Leonardo Farinha & Rohan Dayananda's CLI, Version 1.0", 
+						 HELP=" version: print out the CLI version number " + System.lineSeparator() + " history: displays last 10 commands entered " + System.lineSeparator() + " help: displays list of valid commands " + System.lineSeparator() + " exit: exits CLI /n date prints out current date " + System.lineSeparator() + " time: prints out current time " + System.lineSeparator() + " !<number>: (re)executes command <number> from the history " + System.lineSeparator() + " #<cmd>: executes program <cmd>",
+						 TIME="The time is: ",
+						 DATE="The date is: ";
 	
 	public void checkCommand(StringStack stack, int aCount, int lineCount, String commandLine, String[] shellHistory)
 	{
