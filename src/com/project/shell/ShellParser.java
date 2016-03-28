@@ -79,7 +79,7 @@ public class ShellParser
 					this.lineCount++;
 					aCount++;
 				}else{
-					System.out.println("Missing command after '#'");
+					System.out.println("Missing command before '#'");
 				}
 				break;
 			}
@@ -142,7 +142,7 @@ public class ShellParser
 						this.lineCount++;
 						aCount++;	
 					}else{
-						System.out.println("Missing command after '#'");
+						System.out.println("Missing command before '#'");
 					}
 					break;
 				}			
