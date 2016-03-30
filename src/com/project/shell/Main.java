@@ -6,6 +6,6 @@ public class Main
   
 	 ShellParser shell = new ShellParser();
 	 
-	 shell.readLine();
+	 shell.readInputFromUser();
  }
 }
