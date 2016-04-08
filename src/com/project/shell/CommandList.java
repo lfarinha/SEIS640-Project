@@ -8,7 +8,7 @@ public class CommandList {
 	
 	private final String EXIT="FL,RD CLI exiting.", 
 						 VERSION="Leonardo Farinha & Rohan Dayananda's CLI, Version 1.0", 
-						 HELP=" version: print out the CLI version number " + System.lineSeparator() + " history: displays last 10 commands entered " + System.lineSeparator() + " help: displays list of valid commands " + System.lineSeparator() + " exit: exits CLI /n date prints out current date " + System.lineSeparator() + " time: prints out current time " + System.lineSeparator() + " !<number>: (re)executes command <number> from the history " + System.lineSeparator() + " #<cmd>: executes program <cmd>",
+						 HELP=" version: print out the CLI version number " + System.lineSeparator() + " history: displays last 10 commands entered " + System.lineSeparator() + " help: displays list of valid commands " + System.lineSeparator() + " exit: exits CLI" + System.lineSeparator() + " date: prints out current date " + System.lineSeparator() + " time: prints out current time " + System.lineSeparator() + " !<number>: (re)executes command <number> from the history " + System.lineSeparator() + " #<cmd>: executes program <cmd>",
 						 TIME="The time is: ",
 						 DATE="The date is: ";
 	
@@ -19,7 +19,7 @@ public class CommandList {
 	
 	public void setExitCommand(String commandLine)
 	{
-		if(commandLine.equalsIgnoreCase("exit") || commandLine.equalsIgnoreCase("!20"))
+		if(commandLine.equalsIgnoreCase("exit") || commandLine.equalsIgnoreCase("!0"))
 		{
 			System.out.println(this.EXIT);
 			System.exit(0);
@@ -28,7 +28,7 @@ public class CommandList {
 	
 	public void setVersionCommand(StringStack stack, int aCount, int lineCount, String commandLine, String[] shellHistory)
 	{
-		if(commandLine.equalsIgnoreCase("!21"))
+		if(commandLine.equalsIgnoreCase("!1"))
 		{
 			stack.push(aCount, lineCount+": "+"version");
 			System.out.println(this.VERSION);
@@ -40,7 +40,7 @@ public class CommandList {
 	
 	public void setHelpCommand(StringStack stack, int aCount, int lineCount, String commandLine, String[] shellHistory)
 	{
-		if(commandLine.equalsIgnoreCase("!22"))
+		if(commandLine.equalsIgnoreCase("!2"))
 		{
 			stack.push(aCount, lineCount+": "+"help");
 			System.out.println(this.HELP);
@@ -52,7 +52,7 @@ public class CommandList {
 	
 	public void setTimeCommand(StringStack stack, int aCount, int lineCount, String commandLine, String[] shellHistory)
 	{
-		if(commandLine.equalsIgnoreCase("!23"))
+		if(commandLine.equalsIgnoreCase("!3"))
 		{
 			  stack.push(aCount, lineCount+": "+"time");
 			  String timeStamp = new SimpleDateFormat("hh:mm"+".").format(Calendar.getInstance().getTime());
@@ -66,7 +66,7 @@ public class CommandList {
 	
 	public void setDateCommand(StringStack stack, int aCount, int lineCount, String commandLine, String[] shellHistory)
 	{
-		if(commandLine.equalsIgnoreCase("!24"))
+		if(commandLine.equalsIgnoreCase("!4"))
 		{
 			  stack.push(aCount, lineCount+": "+"date");
 			  Date date = new Date();
@@ -80,7 +80,7 @@ public class CommandList {
 	
 	public void setHistoryCommand(StringStack stack, int aCount, int lineCount, String commandLine, String[] shellHistory)
 	{
-		if(commandLine.equalsIgnoreCase("!25"))
+		if(commandLine.equalsIgnoreCase("!5"))
 		{
 			stack.push(aCount, lineCount+": "+"history");
 		}else{
@@ -90,7 +90,7 @@ public class CommandList {
 	
 	public void setNewProcess(StringStack stack, int aCount, int lineCount, String commandLine, String shellHistory)
 	{
-		if(commandLine.equalsIgnoreCase("!26"))
+		if(commandLine.equalsIgnoreCase("!6"))
 		{
 			  stack.push(aCount, lineCount+": "+"#");
 			  CreateProcess process = new CreateProcess();

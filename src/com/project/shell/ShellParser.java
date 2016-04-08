@@ -19,11 +19,13 @@ public class ShellParser
 		{
 			InputStreamReader line = new InputStreamReader(System.in);
 			BufferedReader console = new BufferedReader(line);
+			
+			System.out.println("Welcome, please don't use SUDO privileges since it's not currently supported.\nThank you!");
+
 	
 			// we break out with <control><C>
 				while (true) {
 					
-					System.out.println("Welcome, please don't use SUDO privileges since it's not currently supported.\nThank you!");
 					
 					// read what the user entered
 					System.out.print(this.tag+"-"+this.lineCount+"> ");
@@ -37,46 +39,46 @@ public class ShellParser
 						if (commandLine.equals(""))
 						{
 							continue;
-						}else if(commandLine.equalsIgnoreCase("exit") || commandLine.equalsIgnoreCase("!20"))  
+						}else if(commandLine.equalsIgnoreCase("exit") || commandLine.equalsIgnoreCase("!0"))  
 						{
 							this.commandList.setExitCommand(commandLine);
 							this.lineCount++;
 		  
-						}else if(commandLine.equalsIgnoreCase("version") || commandLine.equalsIgnoreCase("!21"))  
+						}else if(commandLine.equalsIgnoreCase("version") || commandLine.equalsIgnoreCase("!1"))  
 						{
-							commandList.setVersionCommand(stack, aCount, lineCount, commandLine, shellHistory);;
+							commandList.setVersionCommand(stack, aCount, lineCount, commandLine, shellHistory);
 							this.lineCount++;
 							aCount++;
-						}else if(commandLine.equalsIgnoreCase("help") || commandLine.equalsIgnoreCase("!22"))  
+						}else if(commandLine.equalsIgnoreCase("help") || commandLine.equalsIgnoreCase("!2"))  
 						{
-							commandList.setHelpCommand(stack, aCount, lineCount, commandLine, shellHistory);;
+							commandList.setHelpCommand(stack, aCount, lineCount, commandLine, shellHistory);
 							this.lineCount++;
 							aCount++;
-						}else if(commandLine.equalsIgnoreCase("time") || commandLine.equalsIgnoreCase("!23"))  
+						}else if(commandLine.equalsIgnoreCase("time") || commandLine.equalsIgnoreCase("!3"))  
 						{
-							commandList.setTimeCommand(stack, aCount, lineCount, commandLine, shellHistory);;
+							commandList.setTimeCommand(stack, aCount, lineCount, commandLine, shellHistory);
 							this.lineCount++;
 							aCount++;
-						}else if(commandLine.equalsIgnoreCase("date") || commandLine.equalsIgnoreCase("!24"))  
+						}else if(commandLine.equalsIgnoreCase("date") || commandLine.equalsIgnoreCase("!4"))  
 						{
-							commandList.setDateCommand(stack, aCount, lineCount, commandLine, shellHistory);;
+							commandList.setDateCommand(stack, aCount, lineCount, commandLine, shellHistory);
 							this.lineCount++;
 							aCount++;
-						}else if (commandLine.equalsIgnoreCase("history") || commandLine.equalsIgnoreCase("!25"))
+						}else if (commandLine.equalsIgnoreCase("history") || commandLine.equalsIgnoreCase("!5"))
 						{
 							commandList.setHistoryCommand(stack, aCount, lineCount, commandLine, shellHistory);;
 							this.lineCount++;
 							aCount++;
 							commandList.printHistory(this.aCount, this.stack, false);
-						}else if (shellHistory[0] != null)
+						}else if (commandLine.contains("#"))
 						{
-							while(shellHistory[0] != null)
+							while(commandLine.contains("#"))
 							{
 								this.command = shellHistory[0];
 								if(shellHistory[0].contains("#"))
 								{
 									command = command.replace("#", "");
-									commandList.setNewProcess(stack, aCount, lineCount, commandLine, command);
+									commandList.setNewProcess(this.stack, this.aCount, this.lineCount, this.commandLine, this.command);
 									this.lineCount++;
 									aCount++;
 								}else{
@@ -93,45 +95,46 @@ public class ShellParser
 						if (commandLine.equals(""))
 						{
 							continue;
-						}else if(commandLine.equalsIgnoreCase("exit"))  
+						}else if(commandLine.equalsIgnoreCase("exit") || commandLine.equalsIgnoreCase("!0"))  
 						{
 							this.lineCount++;
 							this.commandList.setExitCommand(commandLine);  
-						} else if(commandLine.equalsIgnoreCase("version") || commandLine.equalsIgnoreCase("!21"))  
+						} else if(commandLine.equalsIgnoreCase("version") || commandLine.equalsIgnoreCase("!1"))  
 						{
 							stack.pop();
 							commandList.setVersionCommand(stack, 9, lineCount, commandLine, shellHistory);;
 							this.lineCount++;
 							aCount++;
-						}else if(commandLine.equalsIgnoreCase("help") || commandLine.equalsIgnoreCase("!22"))  
+						}else if(commandLine.equalsIgnoreCase("help") || commandLine.equalsIgnoreCase("!2"))  
 						{
 							stack.pop();
-							commandList.setHelpCommand(stack, 9, lineCount, commandLine, shellHistory);;
+							commandList.setHelpCommand(stack, 9, lineCount, commandLine, shellHistory);
 							this.lineCount++;
 							aCount++;
-						}else if(commandLine.equalsIgnoreCase("time") || commandLine.equalsIgnoreCase("!23"))  
+						}else if(commandLine.equalsIgnoreCase("time") || commandLine.equalsIgnoreCase("!3"))  
 						{
 							stack.pop();
-							commandList.setTimeCommand(stack, 9, lineCount, commandLine, shellHistory);;
+							commandList.setTimeCommand(stack, 9, lineCount, commandLine, shellHistory);
 							this.lineCount++;
 							aCount++;
-						}else if(commandLine.equalsIgnoreCase("date") || commandLine.equalsIgnoreCase("!24"))  
+						}else if(commandLine.equalsIgnoreCase("date") || commandLine.equalsIgnoreCase("!4"))  
 						{
 							stack.pop();
-							commandList.setDateCommand(stack, 9, lineCount, commandLine, shellHistory);;
+							commandList.setDateCommand(stack, 9, lineCount, commandLine, shellHistory);
 							this.lineCount++;
 							aCount++;
-						}else if (commandLine.equalsIgnoreCase("history") || commandLine.equalsIgnoreCase("!25"))
+						}else if (commandLine.equalsIgnoreCase("history") || commandLine.equalsIgnoreCase("!5"))
 						{
 							stack.pop();
-							commandList.setHistoryCommand(stack, 9, lineCount, commandLine, shellHistory);;
+							commandList.setHistoryCommand(stack, 9, lineCount, commandLine, shellHistory);
 							commandList.printHistory(9, this.stack, true);
 							this.lineCount++;
 							aCount++;
-						}else if (shellHistory[0] != null)
+						}else if (commandLine.contains("#"))
+						//}else if (shellHistory[0] != null)
 						{
 							stack.pop();
-							while(shellHistory[0] != null)
+							while(commandLine.contains("#"))
 							{
 								this.command = shellHistory[0];
 								if(shellHistory[0].contains("#"))
